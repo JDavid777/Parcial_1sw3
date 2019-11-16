@@ -1,0 +1,52 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+    <script type="text/javascript" src="js/scriptLogin.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(function()
+        {
+            $("a").click(function()
+            {
+                var cedula = document.getElementById("cedula").value;
+                $.ajax({
+                    type: "GET",
+                    url: "tareas.php",
+                    data: {
+                        dato: cedula
+                        },
+                    success: function (response) {    
+                    cargarUsuario(response)
+                    }
+                });
+            }
+            )
+        }
+        );
+
+    </script>
+        <link rel="stylesheet" type="text/css" href="css/boostrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styleLogin.css">
+
+  </head>
+
+  <body>
+    <div class="contenedorLogin">
+      <div class="contenidoLogin">
+        <h3>Iniciar sesión</h3>
+        <p>Solo ingresa tu numero de cedula para continuar.</p>
+        <form class="form" action="" method="post">
+          <input id="cedula" type="text" name="cedula" placeholder="Cedula.">
+        </form>
+        <a href="#" class="btn btn-default" > Enviar </a>
+      </div>
+    </div>
+    <p id="cedula"></p>
+  </body>
+</html>
