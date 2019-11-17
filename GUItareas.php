@@ -21,7 +21,7 @@
 
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Administrador de tareas</a>
+            <a class="navbar-brand" href="#"><h3>¡Bienvenido! Comienza a organizar tu tiempo.</h3></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
       
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                <label> <h4> Identificacion:</h4><h4 id= "cedula"> <?php echo $cedula?></h4> </label> 
+                <label> <h4> Identificacion:</h4><h5 id= "cedula"> <?php echo $cedula?></h5> </label> 
             </div>
           </nav>
       
@@ -87,4 +87,14 @@
         crossorigin="anonymous"></script>
     
 </body>
+<footer>
+      <ul>
+        <li><a>Univerisidad del Cauca</a></li>
+        <li><a>Ingenieria de software para la web</a></li>
+        <li><a>David García</a></li>
+        <li><a>Andres Meneses</a></li>
+      
+        
+      </ul>
+    </footer>
 </html>
