@@ -62,7 +62,7 @@
               <div class="col-md-7">
                 <div class="card my-4" id="task-result">
                   <div class="card-body">
-                        <h4 id= "cedula"> <?php echo $cedula?></h4>
+                        <h4 id= "cedula"> Identificación: <?php echo $cedula?></h4>
                       
                     <ul id="container"></ul>
                   </div>
@@ -72,7 +72,7 @@
                   <thead>
                     <tr>
                       <td></td>
-                      <td class="titulo_tabla">Id</td>
+                      <td class="titulo_tabla">N°</td>
                       <td class="titulo_tabla">Nombre</td>
                       <td class="titulo_tabla">Descripcion</td>
                       <td class="titulo_tabla">Estado</td>

@@ -1,6 +1,7 @@
+//Cargar los datos de el usuario loggeado, si no existe se crea
   $(document).ready(function()
   {
-          var cedula = document.getElementById("cedula").innerHTML;
+    var cedula = document.getElementById("cedula").innerHTML;
           $.ajax({
               type: "POST",
               url: "tareas.php",
@@ -14,10 +15,33 @@
    
       }
       );
+//Tacha la tarea cuando esta terminada.
 function tachar(x){
-  
       $(x).find("input").is(":checked")?$(x).addClass("tachado"):$(x).removeClass("tachado");
-      }
+      var elementosTD=$(x).children("td");
+      var idx=0;
+      var id;
+      elementosTD.each(function(){
+        if(idx==1)
+        {
+          id=$(this).text()
+        }
+        idx++;
+      });
+      var cedula = document.getElementById("cedula").innerHTML;
+      $.ajax({
+        type: "GET",
+        url: "gestionarTareas.php",
+        data: {
+            cedula:cedula,
+            idTarea: id
+            },
+        success: function (response) {
+            cargarUsuario(response);
+        }
+    });
+}
+//Cargar y actualiza el dom con las nuevas tareas del usuario
 function cargarUsuario(json)
 {
   var usuario=JSON.parse(json);
@@ -25,39 +49,41 @@ function cargarUsuario(json)
   var idx=1;
   usuario.forEach(tarea => {
 
+    if(tarea.estado=="Completada"){
       plantilla += `
-      <tr onclick="tachar(this)">
-      
-      <td> <input id="check" type="checkbox"></td>
+      <tr class="tachado" onclick="tachar(this)">
+      <label>
+      <td> <input id="check" type="checkbox" checked></td>
       <td> ${idx}</td>
       <td>${tarea.etiqueta} </td>
       <td>${tarea.descripcion}</td>
       <td>${tarea.estado}</td>
+      </label>
       </tr>
    `
+    }
+    else{
+      plantilla += `
+      <tr  onclick="tachar(this)">
+      <label>
+      <td class="celdas"> <input id="check" type="checkbox"></td>
+      <td class="celdas"> ${idx}</td>
+      <td class="celdas">${tarea.etiqueta} </td>
+      <td class="celdas">${tarea.descripcion}</td>
+      <td class="celdas">${tarea.estado}</td>
+      </label>
+      </tr>
+   `
+    }
+      
      idx++;
    });
    $("#tareas").html(plantilla);
 }
-function pintarNuevaTarea(newTarea){
-  var json=JSON.parse(newTarea);
-  var plantilla="";
-  plantilla += `
-      <tr>
-      <td> <input type="checkbox"></td>
-      <td> 0</td>
-      <td>${json.etiqueta} </td>
-      <td>${json.descripcion}</td>
-      <td>${json.estado}</td>
-      </tr>}`
-      $("#tareas").html(plantilla);
-
-}
-
+//Agrega una nueva tarea al usuario 
 function guardar(){
 
-  var nombre= document.getElementById("nombreTarea").innerHTML;
-  var descripcion=document.getElementById("descripcionTarea").innerHTML;
+  
   var cedula=document.getElementById("cedula").innerHTML;
 
 
@@ -71,10 +97,11 @@ function guardar(){
       estado:"incompleta"
         },
     success: function (response) {   
-      console.log(response); 
      cargarUsuario(response);
     }
 })
+   document.getElementById("nombreTarea").value="";
+  document.getElementById("descripcionTarea").value="";
 return false;
 
 }
