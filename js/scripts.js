@@ -83,10 +83,7 @@ function cargarUsuario(json)
 //Agrega una nueva tarea al usuario 
 function guardar(){
 
-  
   var cedula=document.getElementById("cedula").innerHTML;
-
-
   $.ajax({
     type: "GET",
     url: "agregarTareas.php",
