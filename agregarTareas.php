@@ -18,7 +18,6 @@
                 if($archivo != "." && $archivo != ".."){
                     
                     if($archivo==$cedula.".json"){
-                        echo $archivo;
                         $existeUsuario=true;
                         break;
                     }
@@ -28,13 +27,16 @@
             if($existeUsuario){
 
                 $tareaNueva= Tarea::CrearTarea($nombre,$descripcion,$estado);
-                
+               
                 $stringTarea=file_get_contents("jsonUsuarios/".$cedula.'.json');
-                $newlista=json_encode(array(json_decode($stringTarea),$tareaNueva));
                 
+                $datos=json_decode($stringTarea);
+                array_push($datos,$tareaNueva);
+                $newlista=json_encode($datos);
                 file_put_contents("jsonUsuarios/".$cedula.'.json',$newlista);
-                $newArchivo=json_encode($tareaNueva);
-                echo $newArchivo;
+                //para retornar la nueva tarea
+                $newArchivo=file_get_contents("jsonUsuarios/".$cedula.'.json');
+               echo $newArchivo;
                 
             }
             else{

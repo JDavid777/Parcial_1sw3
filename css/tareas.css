@@ -5,3 +5,8 @@ body{
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
 }
+
+.tachado
+{
+    text-decoration: line-through;
+}

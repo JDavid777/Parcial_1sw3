@@ -14,8 +14,18 @@
    
       }
       );
-
-
+ $(document).ready(function()
+      {
+      
+          $('tr').click(function()
+          {
+              var texto = $(this).html();
+              $(this).addClass("tachado");
+              
+          }
+          )
+      }
+      );
 function cargarUsuario(json)
 {
   var usuario=JSON.parse(json);
@@ -25,7 +35,7 @@ function cargarUsuario(json)
 
       plantilla += `
       <tr>
-      <td> <input type="checkbox"></td>
+      <td> <input id="check" type="checkbox"></td>
       <td> ${idx}</td>
       <td>${tarea.etiqueta} </td>
       <td>${tarea.descripcion}</td>
@@ -35,6 +45,20 @@ function cargarUsuario(json)
      idx++;
    });
    $("#tareas").html(plantilla);
+}
+function pintarNuevaTarea(newTarea){
+  var json=JSON.parse(newTarea);
+  var plantilla="";
+  plantilla += `
+      <tr>
+      <td> <input type="checkbox"></td>
+      <td> 0</td>
+      <td>${json.etiqueta} </td>
+      <td>${json.descripcion}</td>
+      <td>${json.estado}</td>
+      </tr>}`
+      $("#tareas").html(plantilla);
+
 }
 
 function guardar(){
@@ -53,8 +77,9 @@ function guardar(){
       descripcion: $("#descripcionTarea").val(), 
       estado:"incompleta"
         },
-    success: function (response) {    
-     
+    success: function (response) {   
+      console.log(response); 
+     cargarUsuario(response);
     }
 })
 return false;
