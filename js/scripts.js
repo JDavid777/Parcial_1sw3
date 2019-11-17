@@ -14,17 +14,10 @@
    
       }
       );
- $(document).ready(function()
-      {
-      
-          $('td').click(function()
-          {
-              $(this).find("input").is(":checked")?$(this).addClass("tachado"):$(this).removeClass("tachado");
-              
-          }
-          )
+function tachar(x){
+  
+      $(x).find("input").is(":checked")?$(x).addClass("tachado"):$(x).removeClass("tachado");
       }
-      );
 function cargarUsuario(json)
 {
   var usuario=JSON.parse(json);
@@ -33,7 +26,8 @@ function cargarUsuario(json)
   usuario.forEach(tarea => {
 
       plantilla += `
-      <tr>
+      <tr onclick="tachar(this)">
+      
       <td> <input id="check" type="checkbox"></td>
       <td> ${idx}</td>
       <td>${tarea.etiqueta} </td>
