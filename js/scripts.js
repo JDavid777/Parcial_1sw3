@@ -17,10 +17,9 @@
  $(document).ready(function()
       {
       
-          $('tr').click(function()
+          $('td').click(function()
           {
-              var texto = $(this).html();
-              $(this).addClass("tachado");
+              $(this).find("input").is(":checked")?$(this).addClass("tachado"):$(this).removeClass("tachado");
               
           }
           )
