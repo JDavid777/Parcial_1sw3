@@ -29,7 +29,7 @@
       
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                <label> <h4 id= "cedula"> Identificación: <?php echo $cedula?></h4> </label> 
+                <label> <h4> Identificacion:</h4><h4 id= "cedula"> <?php echo $cedula?></h4> </label> 
             </div>
           </nav>
       

@@ -36,7 +36,7 @@
                 file_put_contents("jsonUsuarios/".$cedula.'.json',$newlista);
                 //para retornar la nueva tarea
                 $newArchivo=file_get_contents("jsonUsuarios/".$cedula.'.json');
-               echo $newArchivo;
+                echo $newArchivo;
                 
             }
             else{

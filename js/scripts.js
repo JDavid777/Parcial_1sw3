@@ -51,9 +51,9 @@ function cargarUsuario(json)
 
     if(tarea.estado=="Completada"){
       plantilla += `
-      <tr class="tachado" onclick="tachar(this)">
+      <tr class="tachado squaredThree" onclick="tachar(this)">
       <label>
-      <td> <input id="check" type="checkbox" checked></td>
+      <td> <input id= "squaredThree" type="checkbox" checked> <label for="squaredThree"></label></td>
       <td> ${idx}</td>
       <td>${tarea.etiqueta} </td>
       <td>${tarea.descripcion}</td>
@@ -66,7 +66,7 @@ function cargarUsuario(json)
       plantilla += `
       <tr  onclick="tachar(this)">
       <label>
-      <td class="celdas"> <input id="check" type="checkbox"></td>
+      <td class="celdas"> <input id="squaredThreeS" type="checkbox"></td>
       <td class="celdas"> ${idx}</td>
       <td class="celdas">${tarea.etiqueta} </td>
       <td class="celdas">${tarea.descripcion}</td>
