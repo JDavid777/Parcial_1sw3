@@ -29,15 +29,12 @@
       
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                <form class="form-inline my-2 my-lg-0">
-                  <input name="search" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
+                <label> <h4 id= "cedula"> Identificación: <?php echo $cedula?></h4> </label> 
             </div>
           </nav>
       
-          <div class="container">
-            <div class="row p-4">
+          <div class="container divNuevaTarea">
+            <div class="row p-3">
               <div class="col-md-5">
                 <div class="card">
                   <div class="card-body">
@@ -60,18 +57,18 @@
       
           
               <div class="col-md-7">
-                <div class="card my-4" id="task-result">
+                <div class="card my-0" id="task-result">
                   <div class="card-body">
-                        <h4 id= "cedula"> Identificación: <?php echo $cedula?></h4>
+                        <h5> Aqui encontraras todas tus tareas completas e incompletas. Puedes agregar descripciones a tus tareas solo si quieres </h5>
                       
                     <ul id="container"></ul>
                   </div>
                 </div>
       
-                <table class="table table-bordered table-sm">
+                <table class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <td></td>
+                      <td>"¿?"</td>
                       <td class="titulo_tabla">N°</td>
                       <td class="titulo_tabla">Nombre</td>
                       <td class="titulo_tabla">Descripcion</td>

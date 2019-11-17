@@ -2,16 +2,34 @@ body{
     background-image: url("../resources/background.jpg");
 }
 .titulo_tabla{
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
+    text-align: center;
 }
 .celdas{
     font-size: 18px;
+    text-align: center;
     
 }
 .tachado
 {
-    text-decoration: line-through;
+    font-style: unset;   
+    text-decoration:line-through double;
+    background:greenyellow;
+    text-align: center;
 
+}
+input[type="checkbox"]{
+    margin-left: 25px;
+    color:green;
+}
+.divNuevaTarea{
+    margin-top: 50px;
+}
+.fondoTareaCompleta{
+    background-color: blueviolet;
+}
+h4{
+    background-color: azure;
 }
