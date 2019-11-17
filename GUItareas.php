@@ -13,9 +13,11 @@
     crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="js/scriptLogin.js"></script>
+    <?php $cedula=$_POST["cedula"]?>
 
 </head>
 <body>
+
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Administrador de tareas</a>
@@ -46,8 +48,7 @@
                       <div class="form-group">
                         <textarea id="descripcionTarea" cols="30" rows="10" class="form-control" placeholder="Descripcion"></textarea>
                       </div>
-                      <input type="hidden" id="taskId">
-                      <button type="submit" class="btn btn-primary btn-block text-center">
+                      <button class="btn btn-primary btn-block text-center" onclick="guardarTarea()">
                         Guardar
                       </button>
                     </form>
@@ -59,7 +60,8 @@
               <div class="col-md-7">
                 <div class="card my-4" id="task-result">
                   <div class="card-body">
-                        <h4><?php echo $_GET["cedula"]?></h4>
+                        <h4 id= "cedula"><?php echo $cedula?></h4>
+                      
                     <ul id="container"></ul>
                   </div>
                 </div>
@@ -74,7 +76,7 @@
                     </tr>
                    
                   </thead>
-                  <tbody id="tareas"> <?php echo $_GET["tareas"]?></tbody>
+                  <tbody id=tareas> </tbody>
                 </table>
               </div>
             </div>

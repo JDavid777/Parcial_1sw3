@@ -1,31 +1,20 @@
-$(document).ready(function()
-{
-    $("a").click(function()
-    {
-        var cedula = document.getElementById("cedula").value;
-        $.ajax({
-          type: "GET",
-          url: "GUItareas.php",
-          data:{
-            dato: cedula
-          }
-        });
-        $.ajax({
-            type: "GET",
-            url: "tareas.php",
-            data: {
-                dato: cedula
-                },
-            success: function (response) {
-            
-            cargarUsuario(response);
-            }
-        });
- 
-    }
-    )
-}
-);
+  $(document).ready(function()
+  {
+          var cedula = document.getElementById("cedula").innerHTML;
+          $.ajax({
+              type: "POST",
+              url: "tareas.php",
+              data: {
+                  dato: cedula
+                  },
+              success: function (response) {
+                        cargarUsuario(response);
+              }
+          });
+   
+      }
+      );
+
 
 function cargarUsuario(json)
 {
@@ -46,23 +35,23 @@ function cargarUsuario(json)
    `
      idx++;
    });
-   window.location="GUItareas.php?tareas="+plantilla;
+   $("#tareas").html(plantilla);
 }
-/*
-$("#nuevaTarea").summit(function(e){
+
+function guardarTarea(){
+  var nombre= document.getElementById("nombreTarea").innerHTML;
+  var descripcion=document.getElementById("descripcionTarea").innerHTML;
+
+  var json={"etiqueta":nombre,"descripcion": descripcion, "estado":"incompleta"};
+
   $.ajax({
     type: "GET",
-    url: "agregarTareas.php",
+    url: "agregarTareas",
     data: {
-          nombre: $("#nombreTarea").value(),
-          descripcion: $("#descripcionTarea").value(),
-          estado: "Incompleta"
+        dato: json
         },
-    success: function (response) {
-    alert("Guardada");
+    success: function (response) {    
+      alert("Guardada");
     }
-  
 });
-e.preventDefault();
-})
-*/
+} 
