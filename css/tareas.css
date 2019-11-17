@@ -16,20 +16,13 @@ body{
 {
     font-style: unset;   
     text-decoration:line-through double;
-    background:greenyellow;
+    background:rgb(85, 119, 212);
     text-align: center;
 
-}
-input[type="checkbox"]{
-    margin-left: 25px;
-    color:green;
 }
 .divNuevaTarea{
     margin-top: 50px;
 }
 .fondoTareaCompleta{
     background-color: blueviolet;
-}
-h4{
-    background-color: azure;
 }
