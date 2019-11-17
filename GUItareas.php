@@ -12,8 +12,9 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="js/scriptLogin.js"></script>
     <?php $cedula=$_POST["cedula"]?>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    
 
 </head>
 <body>
@@ -41,17 +42,18 @@
                 <div class="card">
                   <div class="card-body">
                 
-                    <form id="nuevaTarea">
+                    <form id="nueva-tarea" onsubmit="return guardar()">
                       <div class="form-group">
                         <input type="text" id="nombreTarea" placeholder="Nombre" class="form-control">
                       </div>
                       <div class="form-group">
                         <textarea id="descripcionTarea" cols="30" rows="10" class="form-control" placeholder="Descripcion"></textarea>
                       </div>
-                      <button class="btn btn-primary btn-block text-center" onclick="guardarTarea()">
+                      <button id="enviar" class="btn btn-primary btn-block text-center">
                         Guardar
                       </button>
                     </form>
+
                   </div>
                 </div>
               </div>
@@ -60,7 +62,7 @@
               <div class="col-md-7">
                 <div class="card my-4" id="task-result">
                   <div class="card-body">
-                        <h4 id= "cedula"><?php echo $cedula?></h4>
+                        <h4 id= "cedula"> <?php echo $cedula?></h4>
                       
                     <ul id="container"></ul>
                   </div>
@@ -69,10 +71,11 @@
                 <table class="table table-bordered table-sm">
                   <thead>
                     <tr>
-                      <td>Id</td>
-                      <td>Nombre</td>
-                      <td>Descripcion</td>
-                      <td>Estado</td>
+                      <td></td>
+                      <td class="titulo_tabla">Id</td>
+                      <td class="titulo_tabla">Nombre</td>
+                      <td class="titulo_tabla">Descripcion</td>
+                      <td class="titulo_tabla">Estado</td>
                     </tr>
                    
                   </thead>

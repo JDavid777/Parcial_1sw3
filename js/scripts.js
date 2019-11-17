@@ -8,7 +8,7 @@
                   dato: cedula
                   },
               success: function (response) {
-                        cargarUsuario(response);
+                      cargarUsuario(response);
               }
           });
    
@@ -18,15 +18,14 @@
 
 function cargarUsuario(json)
 {
-
   var usuario=JSON.parse(json);
   var plantilla='';
   var idx=1;
   usuario.forEach(tarea => {
 
-    console.log(tarea.etiqueta);
       plantilla += `
       <tr>
+      <td> <input type="checkbox"></td>
       <td> ${idx}</td>
       <td>${tarea.etiqueta} </td>
       <td>${tarea.descripcion}</td>
@@ -38,20 +37,26 @@ function cargarUsuario(json)
    $("#tareas").html(plantilla);
 }
 
-function guardarTarea(){
+function guardar(){
+
   var nombre= document.getElementById("nombreTarea").innerHTML;
   var descripcion=document.getElementById("descripcionTarea").innerHTML;
+  var cedula=document.getElementById("cedula").innerHTML;
 
-  var json={"etiqueta":nombre,"descripcion": descripcion, "estado":"incompleta"};
 
   $.ajax({
     type: "GET",
-    url: "agregarTareas",
+    url: "agregarTareas.php",
     data: {
-        dato: json
+      cedula:cedula,
+      etiqueta:$("#nombreTarea").val(),
+      descripcion: $("#descripcionTarea").val(), 
+      estado:"incompleta"
         },
     success: function (response) {    
-      alert("Guardada");
+     
     }
-});
-} 
+})
+return false;
+
+}
