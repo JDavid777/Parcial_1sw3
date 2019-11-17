@@ -1,38 +1,68 @@
+$(document).ready(function()
+{
+    $("a").click(function()
+    {
+        var cedula = document.getElementById("cedula").value;
+        $.ajax({
+          type: "GET",
+          url: "GUItareas.php",
+          data:{
+            dato: cedula
+          }
+        });
+        $.ajax({
+            type: "GET",
+            url: "tareas.php",
+            data: {
+                dato: cedula
+                },
+            success: function (response) {
+            
+            cargarUsuario(response);
+            }
+        });
+ 
+    }
+    )
+}
+);
+
 function cargarUsuario(json)
 {
-  window.location="tareas.html?cedula="+cedula;
+
   var usuario=JSON.parse(json);
+  var plantilla='';
+  var idx=1;
+  usuario.forEach(tarea => {
 
-  for(e of usuario){
-    var strucTarea=$("#tarea").clone();
-    var nombre= $(strucTarea).children("#nombre");
-    var descripcion= $(strucTarea).children("#descripcion");
-    $(nombre).html("<p>"+e.etiqueta+"</p>");
-    $(descripcion).html(e.estado);
-
-    $(strucTarea).appendTo("#tabla");
-
-  }
- 
-
-//  document.getElementById("cedula").innerHTML = cedula;
-
+    console.log(tarea.etiqueta);
+      plantilla += `
+      <tr>
+      <td> ${idx}</td>
+      <td>${tarea.etiqueta} </td>
+      <td>${tarea.descripcion}</td>
+      <td>${tarea.estado}</td>
+      </tr>
+   `
+     idx++;
+   });
+   window.location="GUItareas.php?tareas="+plantilla;
 }
-
-function guardarTarea(){
-  var nombre= document.getElementById("name").value;
-  var descripcion=document.getElementById("descripcion").value;
-
-  var json={"etiqueta":nombre,"descripcion": descripcion, "estado":"incompleta"};
-
+/*
+$("#nuevaTarea").summit(function(e){
   $.ajax({
     type: "GET",
-    url: "tareas.php?guardar= ",
+    url: "agregarTareas.php",
     data: {
-        dato: json
+          nombre: $("#nombreTarea").value(),
+          descripcion: $("#descripcionTarea").value(),
+          estado: "Incompleta"
         },
-    success: function (response) {    
-      alert("Guardada");
+    success: function (response) {
+    alert("Guardada");
     }
+  
 });
-}
+e.preventDefault();
+})
+*/

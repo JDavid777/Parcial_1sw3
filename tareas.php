@@ -26,8 +26,8 @@
     
             if(!$existeUsuario){
 
-                $tarea1= Tarea::CrearTarea("Planear Semana","Incompleta");
-                $tarea2= Tarea::CrearTarea("Ser Feliz","Incompleta");
+                $tarea1= Tarea::CrearTarea("Planear Semana","Organizate para esta semana","Imcompleta");
+                $tarea2= Tarea::CrearTarea("Ser Feliz","Ella no te ama","Incompleta");
     
                 $jsonlistTareas=json_encode(array($tarea1,$tarea2));
                 $archivo= 'jsonUsuarios/'.$usuarioId.'.json';
@@ -40,13 +40,6 @@
         else{
             echo "Debe ingresar su identificacion. Por favor intente nuevamente.";
         }
-
-    }
-
-    if(isset($_GET["guardar"])){
-
-        echo $_GET["nombre"];
-        //var json=$_GET["json"];
 
     }
 ?>
