@@ -21,8 +21,8 @@
         <h3>Iniciar sesión</h3>
         <p>Solo ingresa tu identificacion para continuar.</p>
         <form class="form" action="GUItareas.php" method="post">
-          <input   class="btn btn-default" type ="text"  value="" id="cedula" type="text" name="cedula" placeholder="Cedula.">
-          <input type="submit" value="Enviar">
+          <input minlength="4" maxlength="11" type ="text"  pattern="[0-9]{4-9}" value="" id="cedula" name="cedula" placeholder="Cedula." required>
+          <input  class="btn btn-default" type="submit" value="Enviar">
         </form>
       
       </div>
